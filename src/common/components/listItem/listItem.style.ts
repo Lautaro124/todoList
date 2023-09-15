@@ -4,16 +4,17 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 60,
+    height: 50,
     backgroundColor: getThemeColor('Secondary'),
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
     padding: 5,
     borderRadius: 10,
+    marginBottom: 10,
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '400',
     fontStyle: 'normal',
     color: getThemeColor('Primay'),

@@ -4,9 +4,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 'auto',
+    height: '15%',
     padding: 10,
-    marginBottom: 15,
     gap: 15,
   },
   topContainer: {
