@@ -9,14 +9,12 @@ function HomeScreen() {
   const [isToDo, setIsToDo] = useState(true);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Header isToDo={isToDo} setIsToDo={setIsToDo} />
       <View style={styles.bodyContainer}>
         <Text style={styles.title}>Diary</Text>
         <ScrollView style={styles.scrollViewContainer}>
-          <ListItem isDone title="Barrer" />
-          <ListItem isDone={false} title="Barrer" />
-          <ListItem isDone={false} title="Barrer" />
+          <ListItem isDone title="Barrer" changeState={() => { }} />
         </ScrollView>
       </View>
     </View>

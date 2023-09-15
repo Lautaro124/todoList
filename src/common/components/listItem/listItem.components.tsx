@@ -1,17 +1,17 @@
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import styles from './listItem.style';
 import CheckBox from '@react-native-community/checkbox';
 import { getThemeColor } from '@theme/utils/theme.utils';
+import { Task } from '@common/interface/task.interface';
 
-interface ListItemProps {
-  title: string;
-  isDone: boolean;
+interface ListItemProps extends Task {
+  changeState: () => void;
 }
 
 const ListItem = ({ isDone, title }: ListItemProps) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <CheckBox
         tintColors={{
           true: getThemeColor('Primay'),
@@ -20,7 +20,7 @@ const ListItem = ({ isDone, title }: ListItemProps) => {
         value={isDone}
       />
       <Text style={styles.title}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

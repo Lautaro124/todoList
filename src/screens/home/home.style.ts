@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bodyContainer: {
-    height: '85%',
+    flex: 6,
     paddingHorizontal: 10,
     paddingVertical: 10,
     gap: 10,
