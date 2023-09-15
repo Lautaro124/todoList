@@ -9,14 +9,15 @@ interface ListItemProps extends Task {
   changeState: () => void;
 }
 
-const ListItem = ({ isDone, title }: ListItemProps) => {
+const ListItem = ({ isDone, title, changeState }: ListItemProps) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={changeState}>
       <CheckBox
         tintColors={{
           true: getThemeColor('Primay'),
           false: getThemeColor('Primay'),
         }}
+        onChange={changeState}
         value={isDone}
       />
       <Text style={styles.title}>{title}</Text>
