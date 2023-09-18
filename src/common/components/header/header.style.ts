@@ -4,14 +4,9 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    flex: 1.4,
+    flex: 1,
     padding: 10,
     gap: 15,
-  },
-  title: {
-    color: getThemeColor('Primay'),
-    fontSize: 20,
-    fontWeight: '600',
   },
   topContainer: {
     width: '100%',

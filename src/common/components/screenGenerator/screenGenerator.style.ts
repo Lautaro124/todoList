@@ -1,3 +1,4 @@
+import { getThemeColor } from '@theme/utils/theme.utils';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -12,6 +13,11 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     paddingHorizontal: 10,
+  },
+  title: {
+    color: getThemeColor('Primay'),
+    fontSize: 20,
+    fontWeight: '600',
   },
 });
 

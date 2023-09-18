@@ -16,13 +16,12 @@ export const useTask = (taskType: TaskType) => {
   };
 
   useEffect(() => {
-    console.log('Task');
     initTask(taskType);
   }, [taskType]);
 
   const addNewTask = (task: Task) => {
     setTasks(prevTasks => prevTasks.concat(task));
-    saveData(taskType, tasks);
+    saveData(taskType, tasks.concat(task));
   };
 
   const changeTaskState = (index: number, task: Task) => {

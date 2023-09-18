@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getThemeColor } from '@theme/utils/theme.utils';
 import { TaskType } from '@common/enum/taskType.enum';
 import { Task } from '@common/interface/task.interface';
+import { useNavigation } from '@react-navigation/native';
 
 interface HeaderProps {
   taskType: TaskType;
@@ -16,6 +17,7 @@ interface HeaderProps {
 
 const Header = ({ onAddTask, isToDo, setIsToDo }: HeaderProps) => {
   const [taskTitle, setTaskTitle] = useState('');
+  const navigation = useNavigation();
 
   const getTextStyleToselectedButton = (value: boolean) =>
     value ? styles.textSelectedButton : styles.textNoneSelectedButton;
@@ -23,10 +25,19 @@ const Header = ({ onAddTask, isToDo, setIsToDo }: HeaderProps) => {
   const getStyleToselectedButton = (value: boolean) =>
     value ? styles.selectedButton : styles.noSelectionButton;
 
+  const openDrawer = () => {
+    navigation.openDrawer();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <Icon name="menu" size={30} color={getThemeColor('Primay')} />
+        <Icon
+          name="menu"
+          size={30}
+          color={getThemeColor('Primay')}
+          onPress={openDrawer}
+        />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={() => setIsToDo(true)}
@@ -60,7 +71,6 @@ const Header = ({ onAddTask, isToDo, setIsToDo }: HeaderProps) => {
           }}
         />
       </View>
-      <Text style={styles.title}>Diary</Text>
     </View>
   );
 };
