@@ -4,9 +4,14 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    flex: 1,
+    flex: 1.4,
     padding: 10,
     gap: 15,
+  },
+  title: {
+    color: getThemeColor('Primay'),
+    fontSize: 20,
+    fontWeight: '600',
   },
   topContainer: {
     width: '100%',
@@ -40,13 +45,13 @@ const styles = StyleSheet.create({
     backgroundColor: getThemeColor('Secondary'),
     borderRadius: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    gap: 5,
     paddingHorizontal: 10,
   },
   input: {
     width: '90%',
+    fontSize: 17,
   },
   textSelectedButton: {
     color: getThemeColor('BacgroundLight'),

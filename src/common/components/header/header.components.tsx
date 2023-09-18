@@ -1,15 +1,22 @@
 import { View, Text, TextInput } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './header.style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { getThemeColor } from '@theme/utils/theme.utils';
+import { TaskType } from '@common/enum/taskType.enum';
+import { Task } from '@common/interface/task.interface';
 
 interface HeaderProps {
+  taskType: TaskType;
+  onAddTask: (task: Task) => void;
   isToDo: boolean;
   setIsToDo: (value: boolean) => void;
 }
 
-const Header = ({ isToDo, setIsToDo }: HeaderProps) => {
+const Header = ({ onAddTask, isToDo, setIsToDo }: HeaderProps) => {
+  const [taskTitle, setTaskTitle] = useState('');
+
   const getTextStyleToselectedButton = (value: boolean) =>
     value ? styles.textSelectedButton : styles.textNoneSelectedButton;
 
@@ -19,7 +26,7 @@ const Header = ({ isToDo, setIsToDo }: HeaderProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <Icon name="menu" size={25} />
+        <Icon name="menu" size={30} color={getThemeColor('Primay')} />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={() => setIsToDo(true)}
@@ -34,9 +41,26 @@ const Header = ({ isToDo, setIsToDo }: HeaderProps) => {
         </View>
       </View>
       <View style={styles.bottomContainer}>
-        <Icon name="add" size={25} />
-        <TextInput placeholder="Agrega una tarea" style={styles.input} />
+        <TextInput
+          placeholder="Agrega una tarea"
+          style={styles.input}
+          placeholderTextColor={getThemeColor('placeHolder')}
+          value={taskTitle}
+          onChangeText={setTaskTitle}
+        />
+        <Icon
+          name="add"
+          size={25}
+          color={getThemeColor('Primay')}
+          onPress={() => {
+            onAddTask({
+              title: taskTitle,
+              isDone: false,
+            });
+          }}
+        />
       </View>
+      <Text style={styles.title}>Diary</Text>
     </View>
   );
 };

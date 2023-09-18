@@ -1,54 +1,44 @@
 import Header from '@common/components/header/header.components';
 import ListItem from '@common/components/listItem/listItem.components';
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { KeyboardAvoidingView, View } from 'react-native';
 import styles from './home.style';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Task } from '@common/interface/task.interface';
-import { filterTask } from './utils/filterTask.utils';
+import { useTask } from '@common/hooks/useTask.hooks';
+import { TaskType } from '@common/enum/taskType.enum';
 
 function HomeScreen() {
-  const [isToDo, setIsToDo] = useState(true);
-  const [tasks, setTask] = useState<Task[]>([
-    {
-      title: 'Barrer',
-      isDone: false,
-    },
-  ]);
+  const taskType = TaskType.diary;
+  const { tasks, changeTaskState, addNewTask, isToDo, setIsToDo } =
+    useTask(taskType);
 
-  const changeState = (index: number, task: Task) => {
-    const newTasks = tasks.map((currentTask, currentIndex) => {
-      if (currentIndex === index) {
-        return {
-          title: task.title,
-          isDone: !task.isDone,
-        };
-      }
-      return currentTask;
-    });
-
-    setTask(newTasks);
-  };
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
   return (
-    <View style={styles.container}>
-      <Header isToDo={isToDo} setIsToDo={setIsToDo} />
+    <KeyboardAvoidingView style={styles.container}>
+      <Header
+        taskType={taskType}
+        onAddTask={addNewTask}
+        setIsToDo={setIsToDo}
+        isToDo={isToDo}
+      />
       <View style={styles.bodyContainer}>
-        <Text style={styles.title}>Diary</Text>
         <ScrollView style={styles.scrollViewContainer}>
-          {filterTask(isToDo, tasks).map((task, index) => (
+          {tasks.map((task, index) => (
             <ListItem
               key={index}
               title={task.title}
               isDone={task.isDone}
               changeState={() => {
-                changeState(index, task);
+                changeTaskState(index, task);
               }}
             />
           ))}
         </ScrollView>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
