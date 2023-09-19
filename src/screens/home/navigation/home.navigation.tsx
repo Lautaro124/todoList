@@ -16,6 +16,9 @@ const HomeStack = () => {
       initialRouteName={ScreenNames.Home}
       screenOptions={{
         headerShown: false,
+        drawerActiveBackgroundColor: getThemeColor('Secondary'),
+        drawerActiveTintColor: getThemeColor('Primay'),
+        drawerInactiveBackgroundColor: getThemeColor('BacgroundLight'),
       }}>
       <Drawer.Screen name={ScreenNames.Home} component={HomeScreen} />
       <Drawer.Screen name={ScreenNames.Weekly} component={WeelyScreen} />
