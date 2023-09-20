@@ -1,13 +1,11 @@
 import React from 'react';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import { HomeStackParamList } from './interface/home.interface';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '@common/enum/screenName.enum';
 import HomeScreen from '../home.screen';
 import WeelyScreen from '@screens/weekly/weekly.screen';
 import MounthlyScreen from '@screens/mouthly/mounthly.screen';
+import { getThemeColor } from '@theme/utils/theme.utils';
 
-// const Stack = createStackNavigator<HomeStackParamList>();
 const Drawer = createDrawerNavigator();
 
 const HomeStack = () => {
