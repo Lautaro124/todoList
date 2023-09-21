@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: getThemeColor('BacgroundLight'),
   },
   bodyContainer: {
     flex: 6,
